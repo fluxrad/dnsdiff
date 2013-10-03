@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+$:.unshift File.expand_path("../../lib", __FILE__)
+
+require 'dnsdiff/command'
+require 'thor'
+
+module DNSDiff
+  class CLI < Thor
+    desc "diff", "diff a DNS resource record between two namservers"
+
+    method_option :primary_dns, :aliases => "-p", :default => "8.8.8.8", :desc => "the primary DNS server to use. If blank, uses Google"
+    method_option :secondary_dns, :aliases => "-s", :required => true, :desc => "the second nameserve to use."
+    method_option :file, :aliases => "-f", :desc => "the target file to use."
+    method_option :record, :aliases => "-r", :desc => "the record to query (overrides file)"
+    method_option :record_type, :aliases => "-t", :desc => "the record type."
+
+    def diff
+      DNSDiff::Command.diff(options)
+    end
+  end
+end
+
+DNSDiff::CLI.start(ARGV)
