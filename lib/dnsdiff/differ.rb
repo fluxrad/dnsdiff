@@ -7,14 +7,16 @@ module DNSDiff
 
     attr_accessor :ns1, :ns2, :file, :record, :type
 
-    def colors
-      { :Pass => :green, :Fail => :red }
-    end
-
     def initialize(ns1, ns2)
       @resolvers = {
         :source => Dnsruby::Resolver.new(:nameserver => ns1),
         :dest   => Dnsruby::Resolver.new(:nameserver => ns2)
+      }
+    end
+
+    def colors
+      { :Pass => :green,
+        :Fail => :red
       }
     end
 
