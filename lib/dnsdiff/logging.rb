@@ -1,3 +1,5 @@
+require 'logger'
+
 module DNSDiff
   module Logging
     def logger
