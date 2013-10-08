@@ -24,10 +24,17 @@ module DNSDiff
 
     def self.parse_file(file)
       query_list = []
-      File.open(file, "r").each_line do |line|
-        fields = line.split
-        query_list << { :record => fields[0], :type => fields[1] }
+
+      begin
+        File.open(file, "r").each_line do |line|
+          fields = line.split
+          query_list << { :record => fields[0], :type => fields[1] }
+        end
+      rescue
+        print "Error opening file: #{file}\n"
+        raise
       end
+
       query_list
     end
 
