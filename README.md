@@ -2,6 +2,15 @@
 
 A command line utility to diff records against a set of nameservers.
 
+## Install
+
+To fetch the dependencies do following in the root folder of the repository:
+```bash
+sudo apt install ruby
+sudo gem install bundler
+sudo bundler install
+```
+
 ## Usage
 
 ```
