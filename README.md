@@ -8,8 +8,8 @@ A command line utility to diff records against a set of nameservers.
 1. Install dependencies:
 
 ```bash
-gem install bundler
-bundle install
+$ gem install bundler
+$ bundle install
 ```
 
 ## Usage
