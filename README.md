@@ -2,10 +2,20 @@
 
 A command line utility to diff records against a set of nameservers.
 
+## Install
+
+1. Install ruby via [rbenv](https://github.com/rbenv/rbenv), Docker, or similar.
+1. Install dependencies:
+
+```bash
+gem install bundler
+bundle install
+```
+
 ## Usage
 
 ```
-fluxrad@foo$ ./bin/diffzones help diff
+$ ./bin/diffzones help diff
 Usage:
   diffzones diff -s, --secondary-dns=SECONDARY_DNS
 
@@ -24,13 +34,13 @@ diff a DNS resource record between two namservers
 Test that Amazon returns the same results as the current public DNS
 
 ```
-fluxrad@foo$ cat ./tmp/sysconfig.org
+$ cat ./tmp/sysconfig.org
 sysconfig.org A
 sysconfig.org TXT
 ```
 
 ```
-fluxrad@foo$ ./bin/diffzones diff -s ns-429.awsdns-53.com -f ./tmp/sysconfig.org
+$ ./bin/diffzones diff -s ns-429.awsdns-53.com -f ./tmp/sysconfig.org
 QUERY: SYSCONFIG.ORG A
 RESULT: Pass
         NS1: ["208.113.160.220"]
